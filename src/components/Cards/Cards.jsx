@@ -1,21 +1,20 @@
 import Card from "../Card/Card";
-import Style from  "./Cards.module.css"
+import styles from "./Cards.module.css";
 
 export default function Cards(props) {
-  const { characters } = props;
-//   console.log(characters);
-  return (
-    <div className={Style.Cards}>
-      {characters.map((char) => (
-        <Card
-          key={char.id}
-          name={char.name}
-          species={char.species}
-          gender={char.gender}
-          image={char.image}
-          onClose={() => window.alert("Emulamos que se cierra la card")}
-        />
-      ))}
-    </div>
-  );
+	const { characters } = props;
+	return (
+		<div className={styles.divCards}>
+			{characters.map(({ id, name, species, gender, image }) => (
+				<Card
+					key={id}
+					name={name}
+					species={species}
+					gender={gender}
+					image={image}
+					onClose={() => window.alert("Emulamos que se cierra la card")}
+				/>
+			))}
+		</div>
+	);
 }
