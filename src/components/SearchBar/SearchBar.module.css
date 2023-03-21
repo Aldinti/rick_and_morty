@@ -1,25 +1,41 @@
 .bar {
-	width: 15%;
+	border: 0px solid black;
+	height: 2.5em;
 }
 
 .randomButton {
-	border: 0px;
+	border: 0px solid blue;
 	border-radius: 10px 0px 0px 10px;
 	background-color: var(--color-4);
 	height: 3em;
+	transition: 0.1s;
+}
+
+.randomButton:hover {
+	cursor: pointer;
+	box-shadow: 1px 1px 1px 0.5px rgba(0, 0, 0, 0.3);
+	transform: scale(1.05);
+	font-weight: bold;
 }
 
 .searchInput {
-	border: 0px;
+	border: 0px solid yellow;
 	border-radius: 0px 0px 0px 0px;
 	background-color: var(--color-4);
 	height: 3em;
 }
 
 .searchButton {
-	border: 0px;
+	border: 0px solid red;
 	border-radius: 0px 10px 10px 0px;
 	background-color: var(--color-4);
 	height: 3em;
+	transition: 0.1s;
 }
 
+.searchButton:hover {
+	cursor: pointer;
+	box-shadow: 1px 1px 1px 0.5px rgba(0, 0, 0, 0.3);
+	transform: scale(1.05);
+	font-weight: bold;
+}

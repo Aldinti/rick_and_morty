@@ -1,18 +1,23 @@
 import Cards from "./components/Cards/Cards.jsx";
 import Nav from "./components/Nav/Nav.jsx";
-import styles from "./components/Nav/Nav.module.css";
+// import styles from "./components/Nav/Nav.module.css";
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import About from "./components/About/About.jsx";
+import Detail from "./components/Detail/Detail"
+import Error from "./components/Error/Error.jsx";
 
 function App() {
 	const [characters, setCharacters] = useState([]);
 
 	/* FUNCIÓN ONSEARCH */
 	const onSearch = (id) => {
+		if (characters.find((persona) => persona.id === Number(id)))
+			return window.alert("Tarjeta de personaje ya está!");
 		fetch(`https://rickandmortyapi.com/api/character/${id}`)
 			.then((resp) => resp.json())
 			.then((data) =>
-				data.name &&
-				!characters.find((persona) => persona.id === data.id)
+				data.name
 					? setCharacters((oldCharacters) => [...oldCharacters, data])
 					: alert(`El personaje con id ${id} no se encontró.`),
 			)
@@ -25,22 +30,48 @@ function App() {
 			characters.filter((personaje) => personaje.id !== Number(id)),
 		);
 	};
-	/* FUNCIÓN RANDOM */
-	const getRandom = () => Math.floor(Math.random() * 826);
 
 	return (
 		<div
 			className="App"
 			style={{ padding: "25px" }}>
-			<div className={styles.nav}>
-				<Nav onSearch={onSearch} getRandom={getRandom} />
-			</div>
-			<div>
-				<Cards
-					characters={characters}
-					onClose={onClose}
+			{
+				/* <div className={styles.nav}>*/
+				<Nav onSearch={onSearch} />
+				/*</div> */
+			}
+			<Routes>
+				<Route
+					path="/"
+					element={
+						<Cards
+							characters={characters}
+							onClose={onClose}
+						/>
+					}
 				/>
-			</div>
+				<Route
+					path="/home"
+					element={
+						<Cards
+							characters={characters}
+							onClose={onClose}
+						/>
+					}
+				/>
+				<Route
+					path="/about"
+					element={<About />}
+				/>
+				<Route
+					path="/detail/:detailId"
+					element={<Detail />}
+				/>
+				<Route
+					path="*"
+					element={<Error />}
+				/>
+			</Routes>
 		</div>
 	);
 }

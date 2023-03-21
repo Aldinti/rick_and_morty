@@ -12,7 +12,7 @@ export default function SearchBar({ onSearch }) {
 			<button
 				className={styles.randomButton}
 				onClick={() => onSearch(Math.floor(Math.random() * 826))}>
-				Random
+				RaNdOm
 			</button>
 			<input
 				className={styles.searchInput}
