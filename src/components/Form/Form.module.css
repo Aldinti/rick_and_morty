@@ -1,0 +1,40 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: fit-content;
+	height: fit-content;
+	border: 1px solid black;
+	/* width: 10em; */
+	background-color: var(--color-3);
+	padding: 2em;
+	border-radius: 2em;
+	margin: 3em;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+}
+
+button {
+	margin-top: 1em;
+}
+
+input:focus {
+	transition: 1s;
+	background-color: var(--color-1);
+}
+
+span{
+	color:red;
+	font-weight: bold;
+}
+
+.good{
+	background-color: rgb(190, 255, 190);
+}
+
+.bad{
+	background-color: rgb(255, 190, 190);
+}

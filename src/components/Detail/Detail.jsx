@@ -6,8 +6,8 @@ export default function Detail() {
 	const [characters, setCharacters] = useState({});
 	const { detailId } = useParams();
 	useEffect(() => {
-		axios(`https://rickandmortyapi.com/api/character/${detailId}`).then(
-			(response) => setCharacters(response.data),
+		axios(`https://rickandmortyapi.com/api/character/${detailId}`)
+			.then((response) => setCharacters(response.data),
 		);
 		/* fetch(`https://rickandmortyapi.com/api/character/${detailId}`)
 			.then((res) => res.json())
