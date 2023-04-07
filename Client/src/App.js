@@ -27,19 +27,13 @@ function App() {
 	const onSearch = (id) => {
 		if (characters.find((character) => character.id === Number(id)))
 			return window.alert("Tarjeta de personaje ya está!");
-		// fetch(`https://rickandmortyapi.com/api/character/${id}`)
-		// console.log(`Debug: ${id}`);
-		axios(`http://localhost:3001/rickandmorty/character/${id}`)
-			.then((response) => {
-				if (response.data.name) {
-					setCharacters((oldCharacters) => [...oldCharacters, response.data]);
-					// console.log(`Debuging: ${response.data.name}`);
-				}
-				// alert(`El personaje con id ${id} no se encontró.`);
-			})
-			.catch(() => {alert(`El personaje con id ${id} no se encontró.`);
-				// console.log("Status: ", err.response.status);
-				// HttpStatusCode
+		axios
+			.get(`http://localhost:3001/rickandmorty/character/${id}`)
+			.then((response) =>
+				setCharacters((oldCharacters) => [...oldCharacters, response.data]),
+			)
+			.catch((error) => {
+				alert(`El personaje con id ${id} no existe. \nDescripción del error: ${error.message}`);
 			});
 	};
 
